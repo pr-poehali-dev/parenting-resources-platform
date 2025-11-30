@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   const [chatMessages, setChatMessages] = useState<Array<{text: string, isUser: boolean}>>([
@@ -98,10 +99,10 @@ const Index = () => {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <button className="text-sm font-medium hover:text-primary transition-colors">Главная</button>
-              <button className="text-sm font-medium hover:text-primary transition-colors">Статьи</button>
-              <button className="text-sm font-medium hover:text-primary transition-colors">Места</button>
-              <button className="text-sm font-medium hover:text-primary transition-colors">Карта</button>
+              <Link to="/" className="text-sm font-medium text-primary">Главная</Link>
+              <Link to="/articles" className="text-sm font-medium hover:text-primary transition-colors">Статьи</Link>
+              <Link to="/places" className="text-sm font-medium hover:text-primary transition-colors">Места</Link>
+              <Link to="/profile" className="text-sm font-medium hover:text-primary transition-colors">Профиль</Link>
               <Sheet>
                 <SheetTrigger asChild>
                   <Button variant="outline" size="sm">
@@ -155,9 +156,11 @@ const Index = () => {
               <Button variant="ghost" size="icon" className="md:hidden">
                 <Icon name="Menu" size={24} />
               </Button>
-              <Avatar>
-                <AvatarFallback>У</AvatarFallback>
-              </Avatar>
+              <Link to="/profile">
+                <Avatar>
+                  <AvatarFallback>У</AvatarFallback>
+                </Avatar>
+              </Link>
             </div>
           </div>
         </div>
@@ -174,10 +177,12 @@ const Index = () => {
               Локальный контент, проверенные места, экспертные советы и AI-помощник для воспитания счастливых детей
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" className="text-lg">
-                <Icon name="MapPin" size={20} className="mr-2" />
-                Найти место
-              </Button>
+              <Link to="/places">
+                <Button size="lg" className="text-lg">
+                  <Icon name="MapPin" size={20} className="mr-2" />
+                  Найти место
+                </Button>
+              </Link>
               <Sheet>
                 <SheetTrigger asChild>
                   <Button size="lg" variant="outline" className="text-lg">
@@ -254,10 +259,12 @@ const Index = () => {
               <h2 className="text-3xl font-bold mb-2">Популярные статьи</h2>
               <p className="text-muted-foreground">Экспертные материалы от местных специалистов</p>
             </div>
-            <Button variant="outline">
-              Все статьи
-              <Icon name="ArrowRight" size={16} className="ml-2" />
-            </Button>
+            <Link to="/articles">
+              <Button variant="outline">
+                Все статьи
+                <Icon name="ArrowRight" size={16} className="ml-2" />
+              </Button>
+            </Link>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -288,10 +295,12 @@ const Index = () => {
               <h2 className="text-3xl font-bold mb-2">Рекомендуемые места</h2>
               <p className="text-muted-foreground">Проверенные партнёры для развития ваших детей</p>
             </div>
-            <Button variant="outline">
-              Все места
-              <Icon name="ArrowRight" size={16} className="ml-2" />
-            </Button>
+            <Link to="/places">
+              <Button variant="outline">
+                Все места
+                <Icon name="ArrowRight" size={16} className="ml-2" />
+              </Button>
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
